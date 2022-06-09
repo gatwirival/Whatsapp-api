@@ -34,3 +34,10 @@ Open http://localhost:3000 to view it in the browser.
 
 The page will reload if you make edits.
 You will also see any lint errors in the console.
+### Final Results :boom:
+![image](https://user-images.githubusercontent.com/61587290/172844055-7d86f499-b950-492e-8d0a-034807cdea33.png)
+
+![image](https://user-images.githubusercontent.com/61587290/172844135-f614ec48-5a43-4140-8748-d7bc1aa00a33.png)
+
+![image](https://user-images.githubusercontent.com/61587290/172844162-af9a5456-3d6c-465a-9694-423729229c8a.png)
+
