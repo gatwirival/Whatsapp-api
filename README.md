@@ -7,13 +7,13 @@ exp .
 ```
 ### Install Whatsapp Web library
 `npm i whatsapp-web.js`
+> Installing `whatsapp-web.js` package will also download Chromium because of Puppeteer.
 
 #### qrcode-terminal to show the QR Code in the terminal.
 `npm i qrcode-terminal` 
 
 ### Run locally
  - clone the repo 
- - add .env file to add your api keys from rapid
  
  ### `npm install`
  
@@ -29,6 +29,3 @@ Open http://localhost:3000 to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-## NB
-
-> Installing `whatsapp-web.js` package will also download Chromium because of Puppeteer.Our code does not contain chromium due to its large size so to run it locally rerun the command above
