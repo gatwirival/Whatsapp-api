@@ -79,6 +79,8 @@ app.post('/sendmessage', async (req, res, next) => {
 });
 
 
-app.listen(port, () => {
- console.info("Server started listening.");
-});
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`)
+})
