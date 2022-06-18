@@ -1,5 +1,6 @@
 //set it up in our app.js 
 const express = require('express');
+const puppeteer = require("puppeteer");
 const fs = require('fs');
 const createError = require('http-errors');
 const morgan = require('morgan');
@@ -77,16 +78,29 @@ app.post('/sendmessage', async (req, res, next) => {
     next(error);
   }
 });
+//puppeter
 
-(async () => {
-  const browser = await puppeteer.launch({args: ['--no-sandbox']});
-  const page = await browser.newPage();
-  await page.goto('https://fast.com');
-  await init(browser, page, observer, options);
-})().catch(observer.error.bind(observer));
+app.set("port", process.env.PORT || 3000);
 
-const PORT = process.env.PORT || 3000
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+const browserP = puppeteer.launch({
+  args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
+
+app.get("/", (req, res) => {
+  // FIXME move to a worker task; see https://devcenter.heroku.com/articles/node-redis-workers
+  let page;
+  (async () => {
+    page = await (await browserP).newPage();
+    await page.setContent(`<p>web running at ${Date()}</p>`);
+    res.send(await page.content());
+  })()
+    .catch(err => res.sendStatus(500))
+    .finally(async () => await page.close())
+  ;
+});
+
+app.listen(app.get("port"), () => 
+  console.log("app running on port", app.get("port"))
+);
+
+
