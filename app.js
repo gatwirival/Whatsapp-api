@@ -80,8 +80,6 @@ app.post('/sendmessage', async (req, res, next) => {
 });
 //puppeter
 
-app.set("port", process.env.PORT || 3000);
-
 const browserP = puppeteer.launch({
   args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
@@ -99,8 +97,9 @@ app.get("/", (req, res) => {
   ;
 });
 
-app.listen(app.get("port"), () => 
-  console.log("app running on port", app.get("port"))
-);
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
 
 
