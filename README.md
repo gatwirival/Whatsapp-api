@@ -14,7 +14,7 @@ exp .
 
 ### Run locally
  - clone the repo 
- - cd Whatsapp-api
+ - `cd Whatsapp-api`
  ```
  cd ./node_modules/puppeteer
 npm run install
